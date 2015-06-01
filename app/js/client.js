@@ -1,22 +1,7 @@
 'use strict';
 
-var greet = require('./greet');
-document.write(greet());
-var bookList = document.getElementById('bookList');
+require('angular/angular');
 
-var request = require('superagent');
+var booksApp = angular.module('booksApp', []);
 
-request
-  .get('/api/books')
-  .end(function (err, res) {
-    if (err) return console.log(err);
-
-    var books = JSON.parse(res.text);
-
-    books.forEach(function (book) {
-      var bookEl = document.createElement('li');
-      bookEl.innerHTML = book.title + ', by ' + book.author;
-      bookList.appendChild(bookEl);
-
-    });
-  });
+require('./books/controllers/books_controller')(booksApp);

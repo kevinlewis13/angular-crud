@@ -3,9 +3,8 @@
 var mongoose = require('mongoose');
 
 var bookSchema = mongoose.Schema({
-  ownerId: {type: String, required: true},
   title: {type: String, required: true},
-  author: {type: String, required: true},
+  author: String,
   hardcover: String,
   purchase: {
     location: String,
