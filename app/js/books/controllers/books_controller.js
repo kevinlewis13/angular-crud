@@ -53,6 +53,21 @@ module.exports = function(app) {
       $scope.getAll();
     };
 
+    $scope.cancelEdit = function(book) {
+      book.title = $scope.originalTitle;
+      book.author = $scope.originalAuthor;
+      //book.author = $scope.books[$scope.books.indexOf(book)].title;
+      //console.log(test);
+      book.editing = false;
+    };
+
+    $scope.startEdit = function(book) {
+      book.editing = true;
+      $scope.originalTitle = book.title;
+      $scope.originalAuthor = book.author;
+      //it seems like this is just creating more variables, but cant think of a way around it.
+    };
+
   }]);
 
 };

@@ -26,13 +26,13 @@
       <ul data-ng-repeat="book in books">
         <li>{{book.title}}, by {{book.author}} <!--this might need work -->
           <button data-ng-click="deleteBook(book)">Delete</button>
-          <button data-ng-if="!book.editing" data-ng-click="book.editing = true">Edit</button>
+          <button data-ng-if="!book.editing" data-ng-click="startEdit(book)">Edit</button>
 
           <form name="{{'editing' + book._id}}" data-ng-if="book.editing" data-ng-submit="saveBook(book)">
             <input type="text" placeholder="title" data-ng-model="book.title">
             <input type="text" placeholder="author" data-ng-model="book.author">
             <button type="submit">Save your changes</button>
-            <button data-ng-click="book.editing = false">Cancel</button>
+            <button data-ng-click="cancelEdit(book)">Cancel</button>
           </form>
 
         </li>
